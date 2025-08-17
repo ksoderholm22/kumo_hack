@@ -1,0 +1,13 @@
+diagnosis_id,primary_diagnosis
+D011,Minor Trauma
+D001,CHF
+D008,CKD
+D010,Elective Surgery
+D006,GI Bleed
+D005,MI
+D007,Stroke
+D002,COPD
+D003,Pneumonia
+D004,Sepsis
+D009,UTI
+,Cancer
