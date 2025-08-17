@@ -1,0 +1,9 @@
+diagnosis_id,primary_dx
+D0006,Stroke
+D0005,CHF
+D0007,Elective Surgery
+D0003,MI
+D0002,Sepsis
+D0008,UTI
+D0001,Pneumonia
+D0004,GI Bleed
