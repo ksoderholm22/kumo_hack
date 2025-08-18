@@ -248,9 +248,10 @@ if "script" not in st.session_state:
     st.session_state.script = None
 if "script_generated" not in st.session_state:
     st.session_state.script_generated = False
+if "verify" not in st.session_state:
+    st.session_state.verify = False
 
 with st.container(border=True):
-    verify==False
     st.subheader('Verify Patient')
     # Left column: patient selector & recent history
     col1, col2 = st.columns(2)
@@ -263,11 +264,11 @@ with st.container(border=True):
         patient_dob=pd.to_datetime(patients_df.loc[patients_df['patient_id'] == pid, 'dob'].iloc[0]).date()
         if pid and dob_entered == patient_dob:
             st.success('Patient Verified', icon="✅")
-            verify=True
+            st.session_state.verify=True
         else:
             st.error('Patient Not Verified')
 
-if verify==True:
+if st.session_state.verify==True:
     with st.container(border=True):
         st.subheader('Admission Overview')
         if pid: 
