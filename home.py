@@ -416,7 +416,7 @@ if st.session_state.verify==True:
                 st.write('Predictions are powered by KumoRFM - a state of the art relational foundation model from Kumo AI.' \
                 ' This advanced technology uses a pre-trained model informed with your data as in-context learning to make accurate predictions. Learn more at https://kumo.ai/')
                 #st.code("query = f"PREDICT COUNT(admissions.*, 0, 30, days)>0 FOR patients.patient_id='{pid}'"" )
-                st.image("assets/kumo_logo.jpg", width=100)
+                st.image("assets/kumo_Logo.jpg", width=100)
 
     with st.container(border=True):
         st.subheader('Watch Video')
