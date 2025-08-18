@@ -10,7 +10,7 @@ import openai
 import json
 import time
 import requests
-#import kumoai.experimental.rfm as rfm, os
+import kumoai.experimental.rfm as rfm, os
 
 # Set page config
 st.set_page_config(
