@@ -409,7 +409,7 @@ if st.session_state.verify==True:
                     if st.session_state.risk == 'High':
                         st.subheader("Most Likely Readmission Diagnosis")
                         query2 = f"PREDICT LIST_DISTINCT(admissions.diagnosis_id, 0, 30, days) RANK TOP 3 FOR patients.patient_id='{pid}'"
-                        df_pred = model.predict(query, anchor_time=curr_discharge)
+                        df_pred = model.predict(query2, anchor_time=curr_discharge)
                         next_dx = diagnosis_df[diagnosis_df['diagnosis_id']==df_pred['CLASS'].iloc[0]]['primary_diagnosis'].iloc[0]                  
                         st.write(f"{next_dx}")
             with st.expander("How we make predictions"):
