@@ -30,7 +30,7 @@ st.markdown("""
 
 @st.cache_data
 def load_tables():
-    patients = pd.read_csv("patients2.csv"))
+    patients = pd.read_csv("patients2.csv")
     admissions = pd.read_csv("admissions.csv")
     labs = pd.read_csv("labs.csv"))
     meds = pd.read_csv("medications.csv")
