@@ -355,7 +355,7 @@ if st.session_state.verify==True:
                 st.session_state.get_pred = True
                 st.session_state.factors = admission_factors(pid_info, curr_admission, labs_df, meds_df)
                 model=load_model()
-                query = f"PREDICT COUNT(admissions.*, 0, 30, days)>0 FOR patients.patient_id='{pid}'"
+                query = f"PREDICT COUNT(admissions.*, 0, {perf_window}, days)>0 FOR patients.patient_id='{pid}'"
                 value = model.predict(query, anchor_time=curr_discharge)
                 prob=float(value['True_PROB'].iloc[0])
                 #insert KUMO prediction here
@@ -408,14 +408,17 @@ if st.session_state.verify==True:
                 with col3:
                     if st.session_state.risk == 'High':
                         st.subheader("Most Likely Readmission Diagnosis")
-                        query2 = f"PREDICT LIST_DISTINCT(admissions.diagnosis_id, 0, 30, days) RANK TOP 3 FOR patients.patient_id='{pid}'"
+                        query2 = f"PREDICT LIST_DISTINCT(admissions.diagnosis_id, 0, {perf_window}, days) RANK TOP 1 FOR patients.patient_id='{pid}'"
                         df_pred = model.predict(query2, anchor_time=curr_discharge)
                         next_dx = diagnosis_df[diagnosis_df['diagnosis_id']==df_pred['CLASS'].iloc[0]]['primary_diagnosis'].iloc[0]                  
                         st.write(f"{next_dx}")
             with st.expander("How we make predictions"):
                 st.write('Predictions are powered by KumoRFM - a state of the art relational foundation model from Kumo AI.' \
                 ' This advanced technology uses a pre-trained model informed with your data as in-context learning to make accurate predictions. Learn more at https://kumo.ai/')
-                #st.code("query = f"PREDICT COUNT(admissions.*, 0, 30, days)>0 FOR patients.patient_id='{pid}'"" )
+                st.write('PQL to predict the likelihood of hospital readmission within X days for specified patient id:')
+                st.code('PREDICT COUNT(admissions.*, 0, {perf_window}, days)>0 FOR patients.patient_id='{pid}'', language="python")
+                st.write('PQL to predict the next most likely readmission diagnosis within X days for specified patient_id')
+                st.code('PREDICT LIST_DISTINCT(admissions.diagnosis_id, 0, {perf_window}, days) RANK TOP 1 FOR patients.patient_id='{pid}'', language="python")
                 st.image("assets/kumo_Logo.jpg", width=100)
 
     with st.container(border=True):
