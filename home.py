@@ -416,9 +416,9 @@ if st.session_state.verify==True:
                 st.write('Predictions are powered by KumoRFM - a state of the art relational foundation model from Kumo AI.' \
                 ' This advanced technology uses a pre-trained model informed with your data as in-context learning to make accurate predictions. Learn more at https://kumo.ai/')
                 st.write('PQL to predict the likelihood of hospital readmission within X days for specified patient id:')
-                st.code('PREDICT COUNT(admissions.*, 0, {perf_window}, days)>0 FOR patients.patient_id='{pid}'', language="python")
+                st.code('''PREDICT COUNT(admissions.*, 0, {perf_window}, days)>0 FOR patients.patient_id={pid}''', language="python")
                 st.write('PQL to predict the next most likely readmission diagnosis within X days for specified patient_id')
-                st.code('PREDICT LIST_DISTINCT(admissions.diagnosis_id, 0, {perf_window}, days) RANK TOP 1 FOR patients.patient_id='{pid}'', language="python")
+                st.code('''PREDICT LIST_DISTINCT(admissions.diagnosis_id, 0, {perf_window}, days) RANK TOP 1 FOR patients.patient_id={pid}''', language="python")
                 st.image("assets/kumo_Logo.jpg", width=100)
 
     with st.container(border=True):
