@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#1E88E5"         # calming blue for primary actions
+backgroundColor = "#F8FAFC"      # light, clean background
+secondaryBackgroundColor = "#E3F2FD"  # soft blue panels
+textColor = "#1E293B"            # dark gray for good contrast
+font = "sans serif"              # clean, modern font
