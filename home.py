@@ -250,7 +250,7 @@ if "script_generated" not in st.session_state:
     st.session_state.script_generated = False
 
 with st.container(border=True):
-    #verify=True
+    verify==False
     st.subheader('Verify Patient')
     # Left column: patient selector & recent history
     col1, col2 = st.columns(2)
