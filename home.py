@@ -29,12 +29,12 @@ st.markdown("""
 """)
 
 @st.cache_data
-def load_tables(csv_folder="/Users/kevinsoderholm/Desktop/Readmit/"):
-    patients = pd.read_csv(os.path.join(csv_folder, "patients2.csv"))
-    admissions = pd.read_csv(os.path.join(csv_folder, "admissions.csv"))
-    labs = pd.read_csv(os.path.join(csv_folder, "labs.csv"))
-    meds = pd.read_csv(os.path.join(csv_folder, "medications.csv"))
-    diagnosis = pd.read_csv(os.path.join(csv_folder, "diagnosis.csv"))
+def load_tables():
+    patients = pd.read_csv("patients2.csv"))
+    admissions = pd.read_csv("admissions.csv")
+    labs = pd.read_csv("labs.csv"))
+    meds = pd.read_csv("medications.csv")
+    diagnosis = pd.read_csv("diagnosis.csv")
     return patients, admissions, labs, meds, diagnosis
 
 patients_df, admissions_df, labs_df, meds_df, diagnosis_df = load_tables()
